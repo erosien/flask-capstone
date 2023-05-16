@@ -1,11 +1,11 @@
-from flask import Blueprint, render_template
+from flask import Blueprint
 
-site = Blueprint('site', __name__, template_folder='site_templates')
+site = Blueprint('site', __name__)
 
 @site.route('/')
 def home():
-    return render_template('index.html')
+    return "Home"
 
 @site.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return "Profile"

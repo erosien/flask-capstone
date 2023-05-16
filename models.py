@@ -36,14 +36,14 @@ class User(db.Model, UserMixin):
         self.g_auth_verify = g_auth_verify
 
     def set_token(self, length):
-            return secrets.token_hex(length)
+        return secrets.token_hex(length)
         
     def set_id(self):
-            return str(uuid.uuid4())
+        return str(uuid.uuid4())
         
     def set_password(self, password):
-            self.pw_hash = generate_password_hash(password)
-            return self.pw_hash
+        self.pw_hash = generate_password_hash(password)
+        return self.pw_hash
         
     def __repr__(self):
             return f'Welcome {self.email}! Your account has been created.'
@@ -69,10 +69,10 @@ class Guest(db.Model):
         self.user_token = user_token
 
     def __repr__(self):
-            return f'Thank you for providing that information. We cannot wait to see you at the wedding!'
+        return f'Thank you for providing that information. We cannot wait to see you at the wedding!'
         
     def set_id(self):
-            return (secrets.token_urlsafe())
+        return (secrets.token_urlsafe())
         
 class ContactSchema(ma.Schema):
     class Meta:

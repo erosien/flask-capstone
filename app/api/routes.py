@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, render_template
+from flask import Blueprint, request, jsonify
 from helpers import token_required
 from models import db, User, Guest, contact_schema, contacts_schema
 
@@ -10,7 +10,7 @@ def getdata():
 
 @api.route('/guests', methods = ['POST'])
 @token_required
-def create_contact(current_user_token):
+def create_guest(current_user_token):
     name = request.json['name']
     email = request.json['email']
     phone_number = request.json['phone_number']
@@ -21,7 +21,7 @@ def create_contact(current_user_token):
 
     print(f'BIG TESTER: {current_user_token.token}')
 
-    guest = Guest(name, email, phone_number, address, RSVP, meal, user_token)
+    guest = Guest(name, email, phone_number, address, RSVP, meal, user_token=user_token)
 
     db.session.add(guest)
     db.session.commit()
