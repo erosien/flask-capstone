@@ -4,8 +4,8 @@ site = Blueprint('site', __name__)
 
 @site.route('/')
 def home():
-    return "Home"
+    return 'Home'
 
 @site.route('/profile')
 def profile():
-    return "Profile"
+    return 'Profile'

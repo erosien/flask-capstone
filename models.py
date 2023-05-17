@@ -48,35 +48,27 @@ class User(db.Model, UserMixin):
     def __repr__(self):
             return f'Welcome {self.email}! Your account has been created.'
         
-class Guest(db.Model):
+class Song(db.Model):
     id = db.Column(db.String, primary_key=True)
-    name = db.Column(db.String(150), nullable=False)
-    email = db.Column(db.String(150))
-    phone_number = db.Column(db.String(20))
-    address = db.Column(db.String(200))
-    RSVP = db.Column(db.String(10))
-    meal = db.Column(db.String(150))
+    title = db.Column(db.String(300), nullable=False)
+    artist = db.Column(db.String(300))
     user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable=False)
 
-    def __init__(self,name,email,phone_number,address,RSVP,meal,user_token,id=''):
+    def __init__(self,title,artist,user_token,id=''):
         self.id = self.set_id()
-        self.name = name
-        self.email = email
-        self.phone_number = phone_number
-        self.address = address
-        self.RSVP = RSVP
-        self.meal = meal
+        self.title = title
+        self.artist = artist
         self.user_token = user_token
 
     def __repr__(self):
-        return f'Thank you for providing that information. We cannot wait to see you at the wedding!'
+        return f'Thank you for making a song request!'
         
     def set_id(self):
         return (secrets.token_urlsafe())
         
 class ContactSchema(ma.Schema):
     class Meta:
-        fields = ['id', 'name', 'email', 'phone_number', 'address', 'RSVP', 'meal']
+        fields = ['id', 'title', 'artist']
 
 contact_schema = ContactSchema()
 contacts_schema = ContactSchema(many=True)
