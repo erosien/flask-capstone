@@ -14,6 +14,7 @@ def token_required(our_flask_function):
             token = request.headers['x-access-token'].split(' ')[1]
         if not token:
             return jsonify({'message': 'Token is missing.'}), 401
+        print('token', token)
         
         try:
             current_user_token = User.query.filter_by(token = token).first()
