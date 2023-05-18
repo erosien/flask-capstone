@@ -18,9 +18,10 @@ def token_required(our_flask_function):
             return jsonify({'message': 'Token is missing.'}), 401
         
         try:
-            current_user_token = User.query.filter_by(token = token).first()
-            print(token)
-            print(current_user_token)
+            current_user = User
+            # print(token)
+            # print(current_user_token)
+            return current_user
         except:
             owner = User.query.filter_by(token = token).first()
 

@@ -28,10 +28,10 @@ def create_song(current_user_token):
 @api.route('/songs', methods = ['GET'])
 @token_required
 def get_song(current_user_token):
-    a_song = current_user_token.token
-    songs = Song.query.filter_by(user_token = a_song).all()
-    response = contacts_schema.dump(songs)
-    return jsonify(response)
+    # a_song = current_user_token.token
+    # songs = Song.query.filter_by(user_token = a_song).all()
+    # response = contacts_schema.dump(songs)
+    return jsonify(current_user_token)
 
 @api.route('/songs/<id>', methods = ['GET'])
 @token_required
