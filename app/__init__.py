@@ -11,7 +11,7 @@ from flask_cors import CORS
 from helpers import JSONEncoder
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="http://localhost:5173")
 
 app.register_blueprint(site)
 app.register_blueprint(auth)
