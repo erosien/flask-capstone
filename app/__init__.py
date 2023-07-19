@@ -11,7 +11,7 @@ from flask_cors import CORS
 from helpers import JSONEncoder
 
 app = Flask(__name__)
-CORS(app, origins="https://64b74b992ea6a637be91ecde--lovely-liger-2e925e.netlify.app/#/songrecs")
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 app.register_blueprint(site)
 app.register_blueprint(auth)
